@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "392181011930",
+    "project_id": "test-fc2cf",
+    "storage_bucket": "test-fc2cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392181011930:android:f09ef7c444c112915a9ce3",
+        "android_client_info": {
+          "package_name": "com.example.practice_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHL996hm-f_Yptr3FIuZSfqsdQJOeRq1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

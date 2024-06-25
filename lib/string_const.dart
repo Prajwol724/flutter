@@ -1,0 +1,11 @@
+const String successStr="Successfully Saved";
+const String  nameStr="Please Enter Your Name";
+const String addressStr="Please Enter Your Address";
+const String contactStr="Please Enter Your Phone Number";
+const String genderStr="Please Enter Your Gender";
+const String  fnameStr="Please Enter Your First Name";
+const String  lnameStr="Please Enter Your Last Name";
+const String  ageStr="Please Enter Your Age";
+const String  facultyStr="Please Enter Your Faculty";
+const String  emailStr="Please Enter Your Email";
+const String  passwordStr="Please Enter Your Password";
