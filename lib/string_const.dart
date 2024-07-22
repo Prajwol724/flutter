@@ -9,3 +9,5 @@ const String  ageStr="Please Enter Your Age";
 const String  facultyStr="Please Enter Your Faculty";
 const String  emailStr="Please Enter Your Email";
 const String  passwordStr="Please Enter Your Password";
+const String roleStr="Please enter your role";
+const String userNameStr="Please enter your user name";

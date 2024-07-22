@@ -1,12 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:practice_firebase/model/form_model.dart';
 import 'package:practice_firebase/providers/form_provider.dart';
 import 'package:practice_firebase/status_util.dart';
 import 'package:practice_firebase/string_const.dart';
 import 'package:provider/provider.dart';
 
-class FormBase extends StatelessWidget {
-   FormBase({super.key});
+
+class FormBase extends StatefulWidget {
+  Student? student;
+   FormBase({super.key,this.student});
+
+  @override
+  State<FormBase> createState() => _FormBaseState();
+}
+
+class _FormBaseState extends State<FormBase> {
 final _formKey = GlobalKey<FormState>();
+@override
+  void initState() {
+  var provider= Provider.of<FormProvider>(context,listen: false);
+if(widget.student!= null){
+  provider.setFirstName(widget.student!.fname!);
+  provider.setLastName(widget.student!.lname);
+  provider.setAge(widget.student!.age.toString());
+  provider.setEmail(widget.student!.email);
+  provider.setFaculty(widget.student!.faculty);
+  provider.setPassword(widget.student!.password);
+  provider.setGender(widget.student!.gender);
+  provider.setId(widget.student!.id);
+}
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +44,7 @@ final _formKey = GlobalKey<FormState>();
      child: Column(
       children: [
      TextFormField(
+      initialValue: formProvider.firstname,
         onChanged: (value) {
           formProvider.firstname=value;
         },
@@ -29,6 +56,7 @@ final _formKey = GlobalKey<FormState>();
       
         ),
         validator:(value) {
+          
           if(value!.isEmpty){
             return fnameStr;
           }
@@ -36,6 +64,7 @@ final _formKey = GlobalKey<FormState>();
         },
       ),
       TextFormField(
+      initialValue: formProvider.lastname,
         onChanged: (value) {
           formProvider.lastname=value;
         },
@@ -50,6 +79,7 @@ final _formKey = GlobalKey<FormState>();
         },
       ),
       TextFormField(
+        initialValue: formProvider.age,
         onChanged: (value) {
           formProvider.age=value;
         },
@@ -64,6 +94,7 @@ final _formKey = GlobalKey<FormState>();
         },
       ),
       TextFormField(
+        initialValue: formProvider.faculty,
         onChanged: (value) {
           formProvider.faculty=value;
         },
@@ -79,6 +110,7 @@ final _formKey = GlobalKey<FormState>();
         },
       ),
       TextFormField(
+        initialValue: formProvider.gender,
         onChanged: (value) {
           formProvider.gender=value;
         },
@@ -92,6 +124,7 @@ final _formKey = GlobalKey<FormState>();
         },
       ),
       TextFormField(
+        initialValue: formProvider.email,
         onChanged: (value) {
         formProvider.email=value;
         },
@@ -101,11 +134,15 @@ final _formKey = GlobalKey<FormState>();
         validator: (value) {
           if(value!.isEmpty){
             return emailStr;
+
+            
           }
           return null;
+          
         },
       ),
       TextFormField(
+        initialValue: formProvider.password,
         onChanged: (value) {
           formProvider.password=value;
         },
@@ -123,6 +160,7 @@ final _formKey = GlobalKey<FormState>();
       
       ElevatedButton(onPressed: () async{
         if(_formKey.currentState!.validate()){
+          
           await formProvider.saveStudent();
           if (formProvider.saveUserStatus ==
                               StatusUtil.success) {

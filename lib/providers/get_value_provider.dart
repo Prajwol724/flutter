@@ -14,6 +14,7 @@ DeleteId deleteId=DeleteIdImpl();
 String ? errorMessage;
 StatusUtil saveGetUserStatus= StatusUtil.idle;
 StatusUtil deleteUserStatus= StatusUtil.idle;
+StatusUtil verifyUserStatus=StatusUtil.idle;
 
 setGetUserStatus(StatusUtil status){
 saveGetUserStatus=status;
@@ -23,6 +24,11 @@ notifyListeners();
 setDeleteUserStatus(StatusUtil status){
 deleteUserStatus=status;
 notifyListeners();
+}
+
+setVerifyUserStatus(StatusUtil status){
+  verifyUserStatus=status;
+  notifyListeners();
 }
 
 Future<void>getStudent()async{
@@ -52,6 +58,13 @@ else if(response.status==StatusUtil.error){
   errorMessage=response.errorMessage;
   setDeleteUserStatus(StatusUtil.error);
 }
+}
+
+Future<void>verifyEmail()async{
+  if(verifyUserStatus!=StatusUtil.loading){
+    setVerifyUserStatus(StatusUtil.loading);
+  }
+  
 }
 
 

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practice_firebase/providers/get_value_provider.dart';
 import 'package:practice_firebase/status_util.dart';
+import 'package:practice_firebase/view/view.dart';
 import 'package:provider/provider.dart';
 
 class GetValue extends StatefulWidget {
@@ -114,7 +115,9 @@ class _GetValueState extends State<GetValue> {
                                       width: 10,
                                     ),
 
-                                    IconButton(onPressed: (){}, icon: Icon(Icons.edit),color: Colors.green,),
+                                    IconButton(onPressed: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>FormBase(student: getValueProvider.studentList[index],)));
+                                    }, icon: Icon(Icons.edit),color: Colors.green,),
                               ],
                             ),
                           );
